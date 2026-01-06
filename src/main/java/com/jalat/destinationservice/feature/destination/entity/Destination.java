@@ -14,7 +14,7 @@ import lombok.experimental.FieldDefaults;
 public class Destination {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String destinationId;
+    Integer destinationId;
 
     String destinationName;
     String address;

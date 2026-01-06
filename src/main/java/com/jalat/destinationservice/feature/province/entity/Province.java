@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class Province {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String provinceId;
+    Integer provinceId;
 
     String provinceName;
     LocalDateTime createdAt;

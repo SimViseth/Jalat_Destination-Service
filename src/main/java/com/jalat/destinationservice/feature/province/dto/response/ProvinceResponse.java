@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
 public class ProvinceResponse {
-    String provinceId;
+    Integer provinceId;
     String provinceName;
     LocalDateTime createdAt;
 }
