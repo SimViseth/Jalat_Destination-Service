@@ -1,5 +1,6 @@
 package com.jalat.destinationservice.feature.province.service.serviceImpl;
 
+import com.jalat.destinationservice.app.AppException;
 import com.jalat.destinationservice.app.BaseResponse;
 import com.jalat.destinationservice.core.BaseEntityResponseDto;
 import com.jalat.destinationservice.feature.province.dao.ProvinceDao;
@@ -73,6 +74,7 @@ public class ProvinceServiceImpl implements ProvinceService {
             provinceResponseList.add(provinceResponse);
         }
 
+        // API response
         BaseResponse<List<ProvinceResponse>> baseResponse = new BaseResponse<>();
         baseResponse.setCode(SUCCESS_CODE);
         baseResponse.setStatus(SUCCESS);
@@ -86,6 +88,10 @@ public class ProvinceServiceImpl implements ProvinceService {
 
         BaseEntityResponseDto<Province> daoResponse = provinceDao.findById(provinceId);
 
+        if (daoResponse.getEntity() == null) {
+            throw new AppException("Province does not exist");
+        }
+
         Province province = daoResponse.getEntity();
 
         // map entity to response
@@ -95,10 +101,46 @@ public class ProvinceServiceImpl implements ProvinceService {
                 .createdAt(province.getCreatedAt())
                 .build();
 
+        // API response
         BaseResponse<ProvinceResponse> baseResponse = new BaseResponse<>();
         baseResponse.setCode(SUCCESS_CODE);
         baseResponse.setStatus(SUCCESS);
         baseResponse.setMsg("Get province by Id success.");
+        baseResponse.setData(provinceResponse);
+        return baseResponse;
+    }
+
+    @Override
+    public BaseResponse<ProvinceResponse> updateProvince(Integer provinceId, ProvinceRequest provinceRequest) {
+        BaseEntityResponseDto<Province> daoResponse = provinceDao.findById(provinceId);
+
+        if (daoResponse.getEntity() == null) {
+            throw new AppException("province does not exist");
+        }
+
+        Province province = daoResponse.getEntity();
+
+        // map request to entity
+        province.setProvinceName(provinceRequest.getProvinceName());
+        province.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+
+        // call dao update
+        BaseEntityResponseDto<Province> daoUpdateResponse = provinceDao.update(province);
+        Province provinceUpdate = daoUpdateResponse.getEntity();
+
+        // map entity to response
+        ProvinceResponse provinceResponse = ProvinceResponse.builder()
+                .provinceId(provinceUpdate.getProvinceId())
+                .provinceName(provinceUpdate.getProvinceName())
+                .createdAt(provinceUpdate.getCreatedAt())
+                .updatedAt(provinceUpdate.getUpdatedAt())
+                .build();
+
+        // API response
+        BaseResponse<ProvinceResponse> baseResponse = new BaseResponse<>();
+        baseResponse.setCode(SUCCESS_CODE);
+        baseResponse.setStatus(SUCCESS);
+        baseResponse.setMsg("Update success.");
         baseResponse.setData(provinceResponse);
         return baseResponse;
     }

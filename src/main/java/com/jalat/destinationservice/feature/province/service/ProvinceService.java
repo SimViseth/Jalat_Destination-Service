@@ -12,4 +12,6 @@ public interface ProvinceService {
     BaseResponse<List<ProvinceResponse>> getAllProvince();
 
     BaseResponse<ProvinceResponse> getProvinceById(Integer provinceId);
+
+    BaseResponse<ProvinceResponse> updateProvince(Integer provinceId, ProvinceRequest provinceRequest);
 }

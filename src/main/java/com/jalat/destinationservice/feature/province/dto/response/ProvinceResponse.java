@@ -17,4 +17,6 @@ public class ProvinceResponse {
     Integer provinceId;
     String provinceName;
     Timestamp createdAt;
+    Timestamp updatedAt;
+
 }

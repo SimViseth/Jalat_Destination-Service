@@ -33,4 +33,10 @@ public class ProvinceController {
         BaseResponse<ProvinceResponse> provinceResponse = provinceService.getProvinceById(provinceId);
         return provinceResponse;
     }
+
+    @PutMapping("/update/{provinceId}")
+    public BaseResponse<ProvinceResponse> createProvince(@PathVariable Integer provinceId, @RequestBody ProvinceRequest provinceRequest) {
+        BaseResponse<ProvinceResponse> provinceResponse = provinceService.updateProvince(provinceId, provinceRequest);
+        return provinceResponse;
+    }
 }
