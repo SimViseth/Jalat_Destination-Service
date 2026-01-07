@@ -39,4 +39,9 @@ public class ProvinceController {
         BaseResponse<ProvinceResponse> provinceResponse = provinceService.updateProvince(provinceId, provinceRequest);
         return provinceResponse;
     }
+
+    @DeleteMapping("/delete/{provinceId}")
+    public BaseResponse<Void> deleteProvince(@PathVariable Integer provinceId) {
+        return provinceService.deleteProvince(provinceId);
+    }
 }

@@ -14,4 +14,6 @@ public interface ProvinceService {
     BaseResponse<ProvinceResponse> getProvinceById(Integer provinceId);
 
     BaseResponse<ProvinceResponse> updateProvince(Integer provinceId, ProvinceRequest provinceRequest);
+
+    BaseResponse<Void> deleteProvince(Integer provinceId);
 }

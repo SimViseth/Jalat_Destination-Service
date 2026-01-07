@@ -144,4 +144,22 @@ public class ProvinceServiceImpl implements ProvinceService {
         baseResponse.setData(provinceResponse);
         return baseResponse;
     }
+
+    @Override
+    public BaseResponse<Void> deleteProvince(Integer provinceId) {
+        BaseEntityResponseDto<Province> daoResponse = provinceDao.findById(provinceId);
+
+        if (daoResponse.getEntity() == null) {
+            throw new AppException("Province does not exist");
+        }
+
+        provinceDao.deleteEntity(provinceId);
+
+        BaseResponse<Void> baseResponse = new BaseResponse<>();
+        baseResponse.setCode(SUCCESS_CODE);
+        baseResponse.setStatus(SUCCESS);
+        baseResponse.setMsg("Delete province success.");
+
+        return baseResponse;
+    }
 }
