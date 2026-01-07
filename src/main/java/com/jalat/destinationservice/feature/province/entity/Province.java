@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Getter
@@ -19,6 +20,12 @@ public class Province {
     Integer provinceId;
 
     String provinceName;
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
+    Timestamp createdAt;
+    Timestamp updatedAt;
+
+    @PrePersist
+    void prePersist(){
+        this.createdAt = new Timestamp(System.currentTimeMillis());
+        this.updatedAt = new Timestamp(System.currentTimeMillis());
+    }
 }

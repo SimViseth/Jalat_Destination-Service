@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Getter
@@ -15,5 +16,5 @@ import java.time.LocalDateTime;
 public class ProvinceResponse {
     Integer provinceId;
     String provinceName;
-    LocalDateTime createdAt;
+    Timestamp createdAt;
 }
