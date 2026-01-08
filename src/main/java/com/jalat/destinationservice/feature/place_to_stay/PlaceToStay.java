@@ -1,4 +1,4 @@
-package com.jalat.destinationservice.feature.thing_to_do;
+package com.jalat.destinationservice.feature.place_to_stay;
 
 import com.jalat.destinationservice.feature.destination.entity.Destination;
 import jakarta.persistence.*;
@@ -11,14 +11,20 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Table(name = "thing_to_do")
-public class ThingToDo {
+@Table(name = "place_to_stay")
+public class PlaceToStay {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer ttdId;
+    Integer stayId;
 
-    String title;
+    String accommodationName;
+    String type;
+    String image;
     String description;
+    String village;
+    String commune;
+    String district;
+    String province;
 
     @ManyToOne
     @JoinColumn(name = "destination_id")

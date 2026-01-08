@@ -1,4 +1,4 @@
-package com.jalat.destinationservice.feature.destination.enums;
+package com.jalat.destinationservice.enums;
 
 public enum enumProvince {
     PHNOM_PENH("Phnom Penh"),
