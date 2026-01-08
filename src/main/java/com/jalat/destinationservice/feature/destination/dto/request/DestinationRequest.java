@@ -9,4 +9,10 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DestinationRequest {
+    String destinationName;
+    String destinationType;
+    String village;
+    String commune;
+    String district;
+    String province;
 }
