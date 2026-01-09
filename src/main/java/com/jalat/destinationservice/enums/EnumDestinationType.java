@@ -1,6 +1,6 @@
 package com.jalat.destinationservice.enums;
 
-public enum enumDestinationType {
+public enum EnumDestinationType {
     Mountain,
     Sea,
     Historic,

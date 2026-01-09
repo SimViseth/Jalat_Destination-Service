@@ -11,6 +11,8 @@ import lombok.experimental.FieldDefaults;
 public class DestinationRequest {
     String destinationName;
     String destinationType;
+    String image;
+    String description;
     String village;
     String commune;
     String district;

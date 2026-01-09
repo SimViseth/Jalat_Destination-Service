@@ -14,6 +14,7 @@ public class DestinationResponse {
     Integer destinationId;
     String destinationName;
     String destinationType;
+    String image;
     String village;
     String commune;
     String district;

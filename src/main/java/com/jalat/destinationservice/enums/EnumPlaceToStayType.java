@@ -1,12 +1,12 @@
 package com.jalat.destinationservice.enums;
 
-public enum enumPlaceToStayType {
+public enum EnumPlaceToStayType {
     HOTEL("Hotel"),
     GUESS_HOUSE("Guest house");
 
     private final String display;
 
-    enumPlaceToStayType(String display) {
+    EnumPlaceToStayType(String display) {
         this.display = display;
     }
     @Override

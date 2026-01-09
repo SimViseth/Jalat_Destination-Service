@@ -1,6 +1,6 @@
 package com.jalat.destinationservice.enums;
 
-public enum enumProvince {
+public enum EnumProvince {
     PHNOM_PENH("Phnom Penh"),
     KANDAL("Kandal"),
     TAKEO("Takeo"),
@@ -29,7 +29,7 @@ public enum enumProvince {
 
     private final String display;
 
-    enumProvince(String display) {
+    EnumProvince(String display) {
         this.display = display;
     }
     @Override
