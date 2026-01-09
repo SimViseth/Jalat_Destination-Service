@@ -65,7 +65,8 @@ public class DestinationServiceImpl implements DestinationService {
 
         BaseEntityResponseDto<Destination> daoResponse = destinationDao.findAll();
 
-        DestinationResponse destinationResponse = DestinationResponse.builder()
+        // map entity to response
+        List<DestinationResponse> destinationResponse = List<DestinationResponse>.builder()
                 .destinationId(daoResponse.getEntity().getDestinationId())
                 .destinationName(daoResponse.getEntity().getDestinationName())
                 .destinationType(daoResponse.getEntity().getDestinationType())
@@ -76,5 +77,12 @@ public class DestinationServiceImpl implements DestinationService {
                 .district(daoResponse.getEntity().getDistrict())
                 .province(daoResponse.getEntity().getProvince())
                 .build();
+        // API response
+        BaseResponse<List<DestinationResponse>> baseResponse = new BaseResponse<>();
+        baseResponse.setCode(SUCCESS_CODE);
+        baseResponse.setStatus(SUCCESS);
+        baseResponse.setMsg("Get all destinations successfully.");
+        baseResponse.setData(destinationResponse);
+        return baseResponse;
     }
 }
