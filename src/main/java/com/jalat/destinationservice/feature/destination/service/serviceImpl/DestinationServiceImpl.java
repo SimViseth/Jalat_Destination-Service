@@ -1,13 +1,12 @@
 package com.jalat.destinationservice.feature.destination.service.serviceImpl;
 
 import com.jalat.destinationservice.app.BaseResponse;
-import com.jalat.destinationservice.enums.EnumDestinationType;
+import com.jalat.destinationservice.core.BaseEntityResponseDto;
 import com.jalat.destinationservice.feature.destination.dao.DestinationDao;
 import com.jalat.destinationservice.feature.destination.dto.request.DestinationRequest;
 import com.jalat.destinationservice.feature.destination.dto.response.DestinationResponse;
 import com.jalat.destinationservice.feature.destination.entity.Destination;
 import com.jalat.destinationservice.feature.destination.service.DestinationService;
-import com.jalat.destinationservice.feature.province.entity.Province;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +28,16 @@ public class DestinationServiceImpl implements DestinationService {
         destination.setCommune(destinationRequest.getCommune());
         destination.setDistrict(destinationRequest.getDistrict());
         destination.setProvince(destinationRequest.getProvince());
+
+        BaseEntityResponseDto<Destination> daoResponse = destinationDao.saveEntity(destination);
+
+        // map entity to response
+        DestinationResponse destinationResponse = DestinationResponse.builder()
+                .destinationId(daoResponse.getEntity().getDestinationId())
+                .destinationName(daoResponse.getEntity().getDestinationName())
+                .destinationType(daoResponse.getEntity().getDestinationType())
+                .image(daoResponse.getEntity().getImage())
+                .village(daoResponse.getEntity().getVillage())
+                .build();
     }
 }
