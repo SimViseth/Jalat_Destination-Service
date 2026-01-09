@@ -5,10 +5,9 @@ import com.jalat.destinationservice.feature.destination.dto.request.DestinationR
 import com.jalat.destinationservice.feature.destination.dto.response.DestinationResponse;
 import com.jalat.destinationservice.feature.destination.service.DestinationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/destination")
@@ -20,6 +19,12 @@ public class DestinationController {
     @PostMapping("/create")
     public BaseResponse<DestinationResponse> createDestination(@RequestBody DestinationRequest destinationRequest) {
         BaseResponse<DestinationResponse> destinationResponse = destinationService.createDestination(destinationRequest);
+        return destinationResponse;
+    }
+
+    @GetMapping("getAll")
+    public BaseResponse<List<DestinationResponse>> getAllDestinations() {
+        BaseResponse<List<DestinationResponse>> destinationResponse = destinationService.getAllDestinations();
         return destinationResponse;
     }
 }

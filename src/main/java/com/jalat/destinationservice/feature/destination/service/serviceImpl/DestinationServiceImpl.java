@@ -10,6 +10,8 @@ import com.jalat.destinationservice.feature.destination.service.DestinationServi
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static com.jalat.destinationservice.app.AppConstant.SUCCESS;
 import static com.jalat.destinationservice.app.AppConstant.SUCCESS_CODE;
 
@@ -56,5 +58,10 @@ public class DestinationServiceImpl implements DestinationService {
 
         return baseResponse;
 
+    }
+
+    @Override
+    public BaseResponse<List<DestinationResponse>> getAllDestinations() {
+        return null;
     }
 }
