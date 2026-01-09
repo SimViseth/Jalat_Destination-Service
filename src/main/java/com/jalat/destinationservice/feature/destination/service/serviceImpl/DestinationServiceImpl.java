@@ -37,7 +37,12 @@ public class DestinationServiceImpl implements DestinationService {
                 .destinationName(daoResponse.getEntity().getDestinationName())
                 .destinationType(daoResponse.getEntity().getDestinationType())
                 .image(daoResponse.getEntity().getImage())
+                .description(daoResponse.getEntity().getDescription())
                 .village(daoResponse.getEntity().getVillage())
+                .commune(daoResponse.getEntity().getCommune())
+                .district(daoResponse.getEntity().getDistrict())
+                .province(daoResponse.getEntity().getProvince())
                 .build();
+
     }
 }

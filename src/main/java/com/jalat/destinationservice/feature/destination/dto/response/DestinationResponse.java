@@ -15,6 +15,7 @@ public class DestinationResponse {
     String destinationName;
     String destinationType;
     String image;
+    String description;
     String village;
     String commune;
     String district;
