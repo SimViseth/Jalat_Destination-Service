@@ -62,6 +62,19 @@ public class DestinationServiceImpl implements DestinationService {
 
     @Override
     public BaseResponse<List<DestinationResponse>> getAllDestinations() {
-        return null;
+
+        BaseEntityResponseDto<Destination> daoResponse = destinationDao.findAll();
+
+        DestinationResponse destinationResponse = DestinationResponse.builder()
+                .destinationId(daoResponse.getEntity().getDestinationId())
+                .destinationName(daoResponse.getEntity().getDestinationName())
+                .destinationType(daoResponse.getEntity().getDestinationType())
+                .description(daoResponse.getEntity().getDescription())
+                .image(daoResponse.getEntity().getImage())
+                .village(daoResponse.getEntity().getVillage())
+                .commune(daoResponse.getEntity().getCommune())
+                .district(daoResponse.getEntity().getDistrict())
+                .province(daoResponse.getEntity().getProvince())
+                .build();
     }
 }
