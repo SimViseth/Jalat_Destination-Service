@@ -71,15 +71,15 @@ public class DestinationServiceImpl implements DestinationService {
         for (Destination destination : daoResponse.getEntityList()) {
             // map entity to response
             DestinationResponse destinationResponse = DestinationResponse.builder()
-                    .destinationId(daoResponse.getEntity().getDestinationId())
-                    .destinationName(daoResponse.getEntity().getDestinationName())
-                    .destinationType(daoResponse.getEntity().getDestinationType())
-                    .description(daoResponse.getEntity().getDescription())
-                    .image(daoResponse.getEntity().getImage())
-                    .village(daoResponse.getEntity().getVillage())
-                    .commune(daoResponse.getEntity().getCommune())
-                    .district(daoResponse.getEntity().getDistrict())
-                    .province(daoResponse.getEntity().getProvince())
+                    .destinationId(destination.getDestinationId())
+                    .destinationName(destination.getDestinationName())
+                    .destinationType(destination.getDestinationType())
+                    .description(destination.getDescription())
+                    .image(destination.getImage())
+                    .village(destination.getVillage())
+                    .commune(destination.getCommune())
+                    .district(destination.getDistrict())
+                    .province(destination.getProvince())
                     .build();
             destinationResponseList.add(destinationResponse);
         }
@@ -89,7 +89,7 @@ public class DestinationServiceImpl implements DestinationService {
         baseResponse.setCode(SUCCESS_CODE);
         baseResponse.setStatus(SUCCESS);
         baseResponse.setMsg("Get all destinations successfully.");
-        baseResponse.setData(destinationResponse);
+        baseResponse.setData(destinationResponseList);
         return baseResponse;
     }
 }
