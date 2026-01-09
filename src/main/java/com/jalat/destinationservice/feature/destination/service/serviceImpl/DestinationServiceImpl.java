@@ -10,6 +10,9 @@ import com.jalat.destinationservice.feature.destination.service.DestinationServi
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import static com.jalat.destinationservice.app.AppConstant.SUCCESS;
+import static com.jalat.destinationservice.app.AppConstant.SUCCESS_CODE;
+
 @Service
 @RequiredArgsConstructor
 public class DestinationServiceImpl implements DestinationService {
@@ -43,6 +46,15 @@ public class DestinationServiceImpl implements DestinationService {
                 .district(daoResponse.getEntity().getDistrict())
                 .province(daoResponse.getEntity().getProvince())
                 .build();
+
+        // API response
+        BaseResponse<DestinationResponse> baseResponse = new BaseResponse<>();
+        baseResponse.setCode(SUCCESS_CODE);
+        baseResponse.setStatus(SUCCESS);
+        baseResponse.setMsg("Create destination successfully.");
+        baseResponse.setData(destinationResponse);
+
+        return baseResponse;
 
     }
 }
