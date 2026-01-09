@@ -10,6 +10,7 @@ import com.jalat.destinationservice.feature.destination.service.DestinationServi
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.jalat.destinationservice.app.AppConstant.SUCCESS;
@@ -65,18 +66,24 @@ public class DestinationServiceImpl implements DestinationService {
 
         BaseEntityResponseDto<Destination> daoResponse = destinationDao.findAll();
 
-        // map entity to response
-        List<DestinationResponse> destinationResponse = List<DestinationResponse>.builder()
-                .destinationId(daoResponse.getEntity().getDestinationId())
-                .destinationName(daoResponse.getEntity().getDestinationName())
-                .destinationType(daoResponse.getEntity().getDestinationType())
-                .description(daoResponse.getEntity().getDescription())
-                .image(daoResponse.getEntity().getImage())
-                .village(daoResponse.getEntity().getVillage())
-                .commune(daoResponse.getEntity().getCommune())
-                .district(daoResponse.getEntity().getDistrict())
-                .province(daoResponse.getEntity().getProvince())
-                .build();
+        List<DestinationResponse> destinationResponseList = new ArrayList<>();
+
+        for (Destination destination : daoResponse.getEntityList()) {
+            // map entity to response
+            DestinationResponse destinationResponse = DestinationResponse.builder()
+                    .destinationId(daoResponse.getEntity().getDestinationId())
+                    .destinationName(daoResponse.getEntity().getDestinationName())
+                    .destinationType(daoResponse.getEntity().getDestinationType())
+                    .description(daoResponse.getEntity().getDescription())
+                    .image(daoResponse.getEntity().getImage())
+                    .village(daoResponse.getEntity().getVillage())
+                    .commune(daoResponse.getEntity().getCommune())
+                    .district(daoResponse.getEntity().getDistrict())
+                    .province(daoResponse.getEntity().getProvince())
+                    .build();
+            destinationResponseList.add(destinationResponse);
+        }
+
         // API response
         BaseResponse<List<DestinationResponse>> baseResponse = new BaseResponse<>();
         baseResponse.setCode(SUCCESS_CODE);
