@@ -1,7 +1,5 @@
 package com.jalat.destinationservice.feature.destination.dto.response;
 
-import com.jalat.destinationservice.enums.EnumDestinationType;
-import com.jalat.destinationservice.enums.EnumProvince;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
