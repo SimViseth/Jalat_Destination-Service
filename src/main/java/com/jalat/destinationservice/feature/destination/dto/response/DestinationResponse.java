@@ -15,11 +15,11 @@ import lombok.experimental.FieldDefaults;
 public class DestinationResponse {
     Integer destinationId;
     String destinationName;
-    EnumDestinationType destinationType;
+    String destinationType;
     String image;
     String description;
     String village;
     String commune;
     String district;
-    EnumProvince province;
+    String province;
 }

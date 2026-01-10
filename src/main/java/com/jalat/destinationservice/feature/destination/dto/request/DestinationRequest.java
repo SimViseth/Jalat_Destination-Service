@@ -12,11 +12,11 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DestinationRequest {
     String destinationName;
-    EnumDestinationType destinationType;
+    String destinationType;
     String image;
     String description;
     String village;
     String commune;
     String district;
-    EnumProvince province;
+    String province;
 }

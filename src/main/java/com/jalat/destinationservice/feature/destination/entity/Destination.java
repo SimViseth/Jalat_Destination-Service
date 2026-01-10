@@ -24,14 +24,13 @@ public class Destination {
     Integer destinationId;
 
     String destinationName;
-    @Enumerated(EnumType.STRING)
-    EnumDestinationType destinationType;
+    String destinationType;
     String image;
     String description;
     String village;
     String commune;
     String district;
-    EnumProvince province;
+    String province;
 
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL, orphanRemoval = true)
     List<ThingToDo> thingToDoList;
