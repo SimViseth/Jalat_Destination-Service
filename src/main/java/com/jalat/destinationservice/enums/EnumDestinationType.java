@@ -1,11 +1,21 @@
 package com.jalat.destinationservice.enums;
 
-public enum EnumDestinationType {
-    Mountain,
-    Sea,
-    Historic,
-    Museum;
+import com.fasterxml.jackson.annotation.JsonValue;
 
-//    MOUNTAIN("Mountain"),
-//    SEA("Sea")
+public enum EnumDestinationType {
+    MOUNTAIN("Mountain"),
+    SEA("Sea"),
+    HISTORIC("Historic"),
+    MUSEUM("Museum");
+
+    private final String value;
+
+    EnumDestinationType(String value) {
+        this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+        return value;
+    }
 }

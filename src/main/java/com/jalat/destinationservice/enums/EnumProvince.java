@@ -1,5 +1,7 @@
 package com.jalat.destinationservice.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum EnumProvince {
     PHNOM_PENH("Phnom Penh"),
     KANDAL("Kandal"),
@@ -32,7 +34,7 @@ public enum EnumProvince {
     EnumProvince(String display) {
         this.display = display;
     }
-    @Override
+    @JsonValue
     public String toString() {
         return display;
     }
