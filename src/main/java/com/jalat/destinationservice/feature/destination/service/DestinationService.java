@@ -9,4 +9,10 @@ import java.util.List;
 public interface DestinationService {
     BaseResponse<DestinationResponse> createDestination(DestinationRequest destinationRequest);
     BaseResponse<List<DestinationResponse>> getAllDestinations();
+
+    BaseResponse<DestinationResponse> getDestinationById(Integer destinationId);
+
+    BaseResponse<DestinationResponse> getDestinationByName(String destinationName);
+
+    BaseResponse<DestinationResponse> updateDestination(Integer destinationId, DestinationRequest destinationRequest);
 }

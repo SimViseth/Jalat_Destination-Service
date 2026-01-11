@@ -6,6 +6,7 @@ import com.jalat.destinationservice.feature.destination.dao.DestinationDao;
 import com.jalat.destinationservice.feature.destination.dto.request.DestinationRequest;
 import com.jalat.destinationservice.feature.destination.dto.response.DestinationResponse;
 import com.jalat.destinationservice.feature.destination.entity.Destination;
+import com.jalat.destinationservice.feature.destination.repository.DestinationRepository;
 import com.jalat.destinationservice.feature.destination.service.DestinationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ import static com.jalat.destinationservice.app.AppConstant.SUCCESS_CODE;
 public class DestinationServiceImpl implements DestinationService {
 
     private final DestinationDao destinationDao;
+    private final DestinationRepository destinationRepository;
     @Override
     public BaseResponse<DestinationResponse> createDestination(DestinationRequest destinationRequest) {
 
@@ -91,5 +93,60 @@ public class DestinationServiceImpl implements DestinationService {
         baseResponse.setMsg("Get all destinations successfully.");
         baseResponse.setData(destinationResponseList);
         return baseResponse;
+    }
+
+    @Override
+    public BaseResponse<DestinationResponse> getDestinationById(Integer destinationId) {
+
+        BaseEntityResponseDto<Destination> findDestinationById = destinationDao.findById(destinationId);
+
+        // map entity to response
+        DestinationResponse destinationResponse = DestinationResponse.builder()
+                .destinationId(findDestinationById.getEntity().getDestinationId())
+                .destinationName(findDestinationById.getEntity().getDestinationName())
+                .description(findDestinationById.getEntity().getDescription())
+                .image(findDestinationById.getEntity().getImage())
+                .destinationType(findDestinationById.getEntity().getDestinationType())
+                .village(findDestinationById.getEntity().getVillage())
+                .commune(findDestinationById.getEntity().getCommune())
+                .district(findDestinationById.getEntity().getDistrict())
+                .province(findDestinationById.getEntity().getProvince())
+                .build();
+
+        BaseResponse<DestinationResponse> baseResponse = new BaseResponse<>();
+        baseResponse.setCode(SUCCESS_CODE);
+        baseResponse.setStatus(SUCCESS);
+        baseResponse.setMsg("Get destination by Id successfully.");
+        baseResponse.setData(destinationResponse);
+        return baseResponse;
+    }
+
+    @Override
+    public BaseResponse<DestinationResponse> getDestinationByName(String destinationName) {
+        DestinationResponse findDestination = destinationRepository.findDestinationByProvinceOrDestinationNameLike(destinationName);
+
+        DestinationResponse destinationResponse = DestinationResponse.builder()
+                .destinationId(findDestination.getDestinationId())
+                .destinationName(findDestination.getDestinationName())
+                .description(findDestination.getDescription())
+                .image(findDestination.getImage())
+                .destinationType(findDestination.getDestinationType())
+                .village(findDestination.getVillage())
+                .commune(findDestination.getCommune())
+                .district(findDestination.getDistrict())
+                .province(findDestination.getProvince())
+                .build();
+
+        BaseResponse<DestinationResponse> baseResponse = new BaseResponse<>();
+        baseResponse.setCode(SUCCESS_CODE);
+        baseResponse.setStatus(SUCCESS);
+        baseResponse.setMsg("Get destination successfully.");
+        baseResponse.setData(destinationResponse);
+        return baseResponse;
+    }
+
+    @Override
+    public BaseResponse<DestinationResponse> updateDestination(Integer destinationId, DestinationRequest destinationRequest) {
+        return null;
     }
 }
