@@ -113,6 +113,7 @@ public class DestinationServiceImpl implements DestinationService {
                 .province(findDestinationById.getEntity().getProvince())
                 .build();
 
+        // API response
         BaseResponse<DestinationResponse> baseResponse = new BaseResponse<>();
         baseResponse.setCode(SUCCESS_CODE);
         baseResponse.setStatus(SUCCESS);
@@ -125,6 +126,7 @@ public class DestinationServiceImpl implements DestinationService {
     public BaseResponse<DestinationResponse> getDestinationByName(String destinationName) {
         DestinationResponse findDestination = destinationRepository.findDestinationByProvinceOrDestinationNameLike(destinationName);
 
+        // map entity to response
         DestinationResponse destinationResponse = DestinationResponse.builder()
                 .destinationId(findDestination.getDestinationId())
                 .destinationName(findDestination.getDestinationName())
@@ -137,6 +139,7 @@ public class DestinationServiceImpl implements DestinationService {
                 .province(findDestination.getProvince())
                 .build();
 
+        // API response
         BaseResponse<DestinationResponse> baseResponse = new BaseResponse<>();
         baseResponse.setCode(SUCCESS_CODE);
         baseResponse.setStatus(SUCCESS);
@@ -151,6 +154,7 @@ public class DestinationServiceImpl implements DestinationService {
 
         Destination updateDestination = findDestination.getEntity();
 
+        // map request to entity
         updateDestination.setDestinationName(destinationRequest.getDestinationName());
         updateDestination.setDestinationType(destinationRequest.getDestinationType());
         updateDestination.setImage(destinationRequest.getImage());
@@ -162,6 +166,7 @@ public class DestinationServiceImpl implements DestinationService {
 
         BaseEntityResponseDto<Destination> saveUpdateData = destinationDao.saveEntity(updateDestination);
 
+        // map entity to response
         DestinationResponse destinationResponse = DestinationResponse.builder()
                 .destinationName(saveUpdateData.getEntity().getDestinationName())
                 .destinationType(saveUpdateData.getEntity().getDestinationType())
@@ -173,6 +178,7 @@ public class DestinationServiceImpl implements DestinationService {
                 .province(saveUpdateData.getEntity().getProvince())
                 .build();
 
+        // API response
         BaseResponse<DestinationResponse> baseResponse = new BaseResponse<>();
         baseResponse.setCode(SUCCESS_CODE);
         baseResponse.setStatus(SUCCESS);
