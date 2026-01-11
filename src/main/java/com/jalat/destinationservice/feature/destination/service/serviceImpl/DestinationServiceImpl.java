@@ -61,7 +61,6 @@ public class DestinationServiceImpl implements DestinationService {
         baseResponse.setData(destinationResponse);
 
         return baseResponse;
-
     }
 
     @Override
