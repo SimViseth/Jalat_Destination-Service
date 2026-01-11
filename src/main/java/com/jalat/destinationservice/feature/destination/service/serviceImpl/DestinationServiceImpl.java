@@ -197,6 +197,7 @@ public class DestinationServiceImpl implements DestinationService {
 
         destinationDao.deleteEntity(destinationId);
 
+        // API response
         BaseResponse<Void> baseResponse = new BaseResponse<>();
         baseResponse.setCode(SUCCESS_CODE);
         baseResponse.setStatus(SUCCESS);
