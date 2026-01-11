@@ -45,4 +45,10 @@ public class DestinationController {
         BaseResponse<DestinationResponse> destinationResponse = destinationService.updateDestination(destinationId, destinationRequest);
         return destinationResponse;
     }
+
+    @DeleteMapping("/delete/{destinationId}")
+    public BaseResponse<Void> deleteDestination(@PathVariable Integer destinationId) {
+        BaseResponse<Void> destinationResponse = destinationService.deleteDestination(destinationId);
+        return destinationResponse;
+    }
 }

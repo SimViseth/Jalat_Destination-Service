@@ -15,4 +15,6 @@ public interface DestinationService {
     BaseResponse<DestinationResponse> getDestinationByName(String destinationName);
 
     BaseResponse<DestinationResponse> updateDestination(Integer destinationId, DestinationRequest destinationRequest);
+
+    BaseResponse<Void> deleteDestination(Integer destinationId);
 }

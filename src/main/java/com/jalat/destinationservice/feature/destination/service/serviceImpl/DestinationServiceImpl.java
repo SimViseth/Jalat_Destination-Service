@@ -1,5 +1,6 @@
 package com.jalat.destinationservice.feature.destination.service.serviceImpl;
 
+import com.jalat.destinationservice.app.AppException;
 import com.jalat.destinationservice.app.BaseResponse;
 import com.jalat.destinationservice.core.BaseEntityResponseDto;
 import com.jalat.destinationservice.feature.destination.dao.DestinationDao;
@@ -179,5 +180,23 @@ public class DestinationServiceImpl implements DestinationService {
         baseResponse.setMsg("Destination is updated successfully.");
         baseResponse.setData(destinationResponse);
         return baseResponse;
+    }
+
+    @Override
+    public BaseResponse<Void> deleteDestination(Integer destinationId) {
+        BaseEntityResponseDto<Destination> findDestination = destinationDao.findById(destinationId);
+
+        if (findDestination.getEntity() == null) {
+            throw new AppException("Destination does not exist");
+        }
+
+        destinationDao.deleteEntity(destinationId);
+
+        BaseResponse<Void> baseResponse = new BaseResponse<>();
+        baseResponse.setCode(SUCCESS_CODE);
+        baseResponse.setStatus(SUCCESS);
+        baseResponse.setMsg("Destination is deleted successfully.");
+        return baseResponse;
+
     }
 }
