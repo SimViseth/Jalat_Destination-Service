@@ -147,6 +147,37 @@ public class DestinationServiceImpl implements DestinationService {
 
     @Override
     public BaseResponse<DestinationResponse> updateDestination(Integer destinationId, DestinationRequest destinationRequest) {
-        return null;
+        BaseEntityResponseDto<Destination> findDestination = destinationDao.findById(destinationId);
+
+        Destination updateDestination = findDestination.getEntity();
+
+        updateDestination.setDestinationName(destinationRequest.getDestinationName());
+        updateDestination.setDestinationType(destinationRequest.getDestinationType());
+        updateDestination.setImage(destinationRequest.getImage());
+        updateDestination.setDescription(destinationRequest.getDescription());
+        updateDestination.setVillage(destinationRequest.getVillage());
+        updateDestination.setCommune(destinationRequest.getCommune());
+        updateDestination.setDistrict(destinationRequest.getDistrict());
+        updateDestination.setProvince(destinationRequest.getProvince());
+
+        BaseEntityResponseDto<Destination> saveUpdateData = destinationDao.saveEntity(updateDestination);
+
+        DestinationResponse destinationResponse = DestinationResponse.builder()
+                .destinationName(saveUpdateData.getEntity().getDestinationName())
+                .destinationType(saveUpdateData.getEntity().getDestinationType())
+                .description(saveUpdateData.getEntity().getDescription())
+                .image(saveUpdateData.getEntity().getImage())
+                .village(saveUpdateData.getEntity().getVillage())
+                .commune(saveUpdateData.getEntity().getCommune())
+                .district(saveUpdateData.getEntity().getCommune())
+                .province(saveUpdateData.getEntity().getProvince())
+                .build();
+
+        BaseResponse<DestinationResponse> baseResponse = new BaseResponse<>();
+        baseResponse.setCode(SUCCESS_CODE);
+        baseResponse.setStatus(SUCCESS);
+        baseResponse.setMsg("Destination is updated successfully.");
+        baseResponse.setData(destinationResponse);
+        return baseResponse;
     }
 }
