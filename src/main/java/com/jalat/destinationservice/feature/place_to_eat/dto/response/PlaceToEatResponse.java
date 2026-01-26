@@ -1,6 +1,7 @@
-package com.jalat.destinationservice.feature.place_to_eat.dto.request;
+package com.jalat.destinationservice.feature.place_to_eat.dto.response;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
@@ -8,7 +9,10 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class PlaceToEatRequest {
+@Builder
+public class PlaceToEatResponse {
+    Integer eatId;
+
     String shopName;
     String image;
     String description;
