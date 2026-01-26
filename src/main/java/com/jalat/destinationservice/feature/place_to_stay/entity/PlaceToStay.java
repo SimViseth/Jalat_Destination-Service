@@ -1,4 +1,4 @@
-package com.jalat.destinationservice.feature.place_to_stay;
+package com.jalat.destinationservice.feature.place_to_stay.entity;
 
 import com.jalat.destinationservice.feature.destination.entity.Destination;
 import jakarta.persistence.*;

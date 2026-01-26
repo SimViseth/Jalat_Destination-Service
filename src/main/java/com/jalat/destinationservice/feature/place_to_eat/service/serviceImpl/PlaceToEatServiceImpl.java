@@ -3,8 +3,6 @@ package com.jalat.destinationservice.feature.place_to_eat.service.serviceImpl;
 import com.jalat.destinationservice.app.AppException;
 import com.jalat.destinationservice.app.BaseResponse;
 import com.jalat.destinationservice.core.BaseEntityResponseDto;
-import com.jalat.destinationservice.feature.destination.dto.response.DestinationResponse;
-import com.jalat.destinationservice.feature.destination.entity.Destination;
 import com.jalat.destinationservice.feature.place_to_eat.dao.PlaceToEatDao;
 import com.jalat.destinationservice.feature.place_to_eat.dto.request.PlaceToEatRequest;
 import com.jalat.destinationservice.feature.place_to_eat.dto.response.PlaceToEatResponse;

@@ -1,7 +1,7 @@
 package com.jalat.destinationservice.feature.destination.entity;
 
 import com.jalat.destinationservice.feature.place_to_eat.entity.PlaceToEat;
-import com.jalat.destinationservice.feature.place_to_stay.PlaceToStay;
+import com.jalat.destinationservice.feature.place_to_stay.entity.PlaceToStay;
 import com.jalat.destinationservice.feature.thing_to_do.entity.ThingToDo;
 import jakarta.persistence.*;
 import lombok.AccessLevel;

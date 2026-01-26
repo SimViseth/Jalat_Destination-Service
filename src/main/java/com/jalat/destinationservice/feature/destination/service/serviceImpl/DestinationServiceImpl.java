@@ -124,7 +124,7 @@ public class DestinationServiceImpl implements DestinationService {
 
     @Override
     public BaseResponse<DestinationResponse> getDestinationByName(String destinationName) {
-        DestinationResponse findDestination = destinationRepository.findDestinationByProvinceOrDestinationNameLike(destinationName);
+        DestinationResponse findDestination = destinationRepository.findDestinationByDestinationNameLike(destinationName);
 
         // map entity to response
         DestinationResponse destinationResponse = DestinationResponse.builder()

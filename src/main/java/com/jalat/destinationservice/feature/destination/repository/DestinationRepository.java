@@ -5,5 +5,5 @@ import com.jalat.destinationservice.feature.destination.dto.response.Destination
 import com.jalat.destinationservice.feature.destination.entity.Destination;
 
 public interface DestinationRepository extends IBaseRepository<Destination, Integer> {
-    DestinationResponse findDestinationByProvinceOrDestinationNameLike(String name);
+    DestinationResponse findDestinationByDestinationNameLike(String name);
 }
