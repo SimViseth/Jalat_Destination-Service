@@ -12,6 +12,7 @@ import com.jalat.destinationservice.feature.place_to_stay.service.PlaceToStaySer
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.jalat.destinationservice.app.AppConstant.SUCCESS;
@@ -62,6 +63,32 @@ public class PlaceToStayServiceImpl implements PlaceToStayService {
 
     @Override
     public BaseResponse<List<PlaceToStayResponse>> getAllPlaceToStay() {
-        return null;
+        BaseEntityResponseDto<PlaceToStay> daoResponse = placeToStayDao.findAll();
+
+        List<PlaceToStayResponse> placeToStayResponseList = new ArrayList<>();
+
+        for (PlaceToStay placeToStay : daoResponse.getEntityList()) {
+            // map entity to response
+            PlaceToStayResponse placeToStayResponse = PlaceToStayResponse.builder()
+                    .stayId(placeToStay.getStayId())
+                    .accommodationName(placeToStay.getAccommodationName())
+                    .image(placeToStay.getImage())
+                    .type(placeToStay.getType())
+                    .description(placeToStay.getDescription())
+                    .village(placeToStay.getVillage())
+                    .commune(placeToStay.getCommune())
+                    .district(placeToStay.getDistrict())
+                    .province(placeToStay.getProvince())
+                    .build();
+            placeToStayResponseList.add(placeToStayResponse);
+        }
+
+        // API response
+        BaseResponse<List<PlaceToStayResponse>> baseResponse = new BaseResponse<>();
+        baseResponse.setCode(SUCCESS_CODE);
+        baseResponse.setStatus(SUCCESS);
+        baseResponse.setMsg("Get all place to stay successfully.");
+        baseResponse.setData(placeToStayResponseList);
+        return baseResponse;
     }
 }
