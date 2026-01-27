@@ -23,8 +23,13 @@ public class ThingToDoController {
         return thingToDoService.createThingToDo(thingToDoRequest);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public BaseResponse<List<ThingToDoResponse>> getAllThingToDo() {
         return thingToDoService.getAllThingToDo();
+    }
+
+    @GetMapping("/update/{thingToDoId}")
+    public BaseResponse<ThingToDoResponse> updateThingToDo(@PathVariable Integer thingToDoId, @RequestBody ThingToDoRequest thingToDoRequest) {
+        return thingToDoService.updateThingToDo(thingToDoId, thingToDoRequest);
     }
 }
