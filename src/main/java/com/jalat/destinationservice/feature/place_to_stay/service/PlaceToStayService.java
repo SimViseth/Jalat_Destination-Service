@@ -10,4 +10,10 @@ public interface PlaceToStayService {
     BaseResponse<PlaceToStayResponse> createPlaceToStay(PlaceToStayRequest placeToStayRequest);
 
     BaseResponse<List<PlaceToStayResponse>> getAllPlaceToStay();
+
+    BaseResponse<PlaceToStayResponse> getPlaceToStayById(Integer placeToStayId);
+
+    BaseResponse<PlaceToStayResponse> updatePlaceToStay(Integer placeToStayId, PlaceToStayRequest placeToStayRequest);
+
+    BaseResponse<Void> deletePlaceToStay(Integer placeToStayId);
 }

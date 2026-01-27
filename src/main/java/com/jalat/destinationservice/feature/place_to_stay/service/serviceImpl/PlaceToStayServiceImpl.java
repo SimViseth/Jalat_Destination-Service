@@ -92,4 +92,19 @@ public class PlaceToStayServiceImpl implements PlaceToStayService {
         baseResponse.setData(placeToStayResponseList);
         return baseResponse;
     }
+
+    @Override
+    public BaseResponse<PlaceToStayResponse> getPlaceToStayById(Integer placeToStayId) {
+        return null;
+    }
+
+    @Override
+    public BaseResponse<PlaceToStayResponse> updatePlaceToStay(Integer placeToStayId, PlaceToStayRequest placeToStayRequest) {
+        return null;
+    }
+
+    @Override
+    public BaseResponse<Void> deletePlaceToStay(Integer placeToStayId) {
+        return null;
+    }
 }

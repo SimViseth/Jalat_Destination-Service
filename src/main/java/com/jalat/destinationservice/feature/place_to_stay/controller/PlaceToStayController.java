@@ -28,4 +28,20 @@ public class PlaceToStayController {
         BaseResponse<List<PlaceToStayResponse>> placeToStayResponse = placeToStayService.getAllPlaceToStay();
         return placeToStayResponse;
     }
+    @GetMapping("/getById/{placeToStayId}")
+    public BaseResponse<PlaceToStayResponse> getPlaceToStayById(@PathVariable Integer placeToStayId) {
+        BaseResponse<PlaceToStayResponse> placeToStayResponse = placeToStayService.getPlaceToStayById(placeToStayId);
+        return placeToStayResponse;
+    }
+    @PutMapping("/update/{placeToStayId}")
+    public BaseResponse<PlaceToStayResponse> updatePlaceToStay(@PathVariable Integer placeToStayId, @RequestBody PlaceToStayRequest placeToStayRequest) {
+        BaseResponse<PlaceToStayResponse> placeToStayResponse = placeToStayService.updatePlaceToStay(placeToStayId, placeToStayRequest);
+        return placeToStayResponse;
+    }
+
+    @DeleteMapping("/delete/{placeToStayId}")
+    public BaseResponse<Void> deletePlaceToStay(@PathVariable Integer placeToStayId) {
+        BaseResponse<Void> placeToStayResponse = placeToStayService.deletePlaceToStay(placeToStayId);
+        return placeToStayResponse;
+    }
 }
