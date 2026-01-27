@@ -32,4 +32,9 @@ public class ThingToDoController {
     public BaseResponse<ThingToDoResponse> updateThingToDo(@PathVariable Integer thingToDoId, @RequestBody ThingToDoRequest thingToDoRequest) {
         return thingToDoService.updateThingToDo(thingToDoId, thingToDoRequest);
     }
+
+    @GetMapping("/getById/{thingToDoId}")
+    public BaseResponse<ThingToDoResponse> getThingToDoById(@PathVariable Integer thingToDoId) {
+        return thingToDoService.getThingToDoById(thingToDoId);
+    }
 }

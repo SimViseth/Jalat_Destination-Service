@@ -118,4 +118,28 @@ public class ThingToDoServiceImpl implements ThingToDoService {
         baseResponse.setData(thingToDoResponse);
         return baseResponse;
     }
+
+    @Override
+    public BaseResponse<ThingToDoResponse> getThingToDoById(Integer thingToDoId) {
+        BaseEntityResponseDto<ThingToDo> findTtd = thingToDoDao.findById(thingToDoId);
+        ThingToDo thingToDo = findTtd.getEntity();
+
+        ThingToDoResponse thingToDoResponse = ThingToDoResponse.builder()
+                .ttdId(thingToDo.getTtdId())
+                .image(thingToDo.getImage())
+                .title(thingToDo.getTitle())
+                .description(thingToDo.getDescription())
+                .village(thingToDo.getVillage())
+                .commune(thingToDo.getCommune())
+                .district(thingToDo.getDistrict())
+                .province(thingToDo.getProvince())
+                .build();
+
+        BaseResponse<ThingToDoResponse> baseResponse = new BaseResponse<>();
+        baseResponse.setCode(SUCCESS_CODE);
+        baseResponse.setStatus(SUCCESS);
+        baseResponse.setMsg("Get thing to do by id successfully");
+        baseResponse.setData(thingToDoResponse);
+        return baseResponse;
+    }
 }

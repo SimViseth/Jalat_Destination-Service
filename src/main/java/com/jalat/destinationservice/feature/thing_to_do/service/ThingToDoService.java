@@ -14,4 +14,6 @@ public interface ThingToDoService {
     BaseResponse<List<ThingToDoResponse>> getAllThingToDo();
 
     BaseResponse<ThingToDoResponse> updateThingToDo(Integer thingToDoId, ThingToDoRequest thingToDoRequest);
+
+    BaseResponse<ThingToDoResponse> getThingToDoById(Integer thingToDoId);
 }
