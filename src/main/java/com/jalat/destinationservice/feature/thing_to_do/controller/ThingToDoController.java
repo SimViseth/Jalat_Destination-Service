@@ -7,10 +7,9 @@ import com.jalat.destinationservice.feature.thing_to_do.dto.response.ThingToDoRe
 import com.jalat.destinationservice.feature.thing_to_do.entity.ThingToDo;
 import com.jalat.destinationservice.feature.thing_to_do.service.ThingToDoService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/thing-to-do")
@@ -19,8 +18,13 @@ public class ThingToDoController {
 
     private final ThingToDoService thingToDoService;
 
-    @PostMapping
+    @PostMapping("/create")
     public BaseResponse<ThingToDoResponse> createThingToDo(@RequestBody ThingToDoRequest thingToDoRequest) {
         return thingToDoService.createThingToDo(thingToDoRequest);
+    }
+
+    @GetMapping
+    public BaseResponse<List<ThingToDoResponse>> getAllThingToDo() {
+        return thingToDoService.getAllThingToDo();
     }
 }

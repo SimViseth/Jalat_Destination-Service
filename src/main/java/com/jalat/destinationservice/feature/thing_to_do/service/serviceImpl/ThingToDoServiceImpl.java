@@ -10,6 +10,9 @@ import com.jalat.destinationservice.feature.thing_to_do.service.ThingToDoService
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.jalat.destinationservice.app.AppConstant.SUCCESS;
 import static com.jalat.destinationservice.app.AppConstant.SUCCESS_CODE;
 
@@ -49,6 +52,34 @@ public class ThingToDoServiceImpl implements ThingToDoService {
         baseResponse.setStatus(SUCCESS);
         baseResponse.setMsg("Thing to do is created successfully");
         baseResponse.setData(thingToDoResponse);
+        return baseResponse;
+    }
+
+    @Override
+    public BaseResponse<List<ThingToDoResponse>> getAllThingToDo() {
+        BaseEntityResponseDto<ThingToDo> findThingToDo = thingToDoDao.findAll();
+
+        List<ThingToDoResponse> thingToDoResponseList = new ArrayList<>();
+
+        for (ThingToDo thingToDo : findThingToDo.getEntityList()) {
+            ThingToDoResponse thingToDoResponse = ThingToDoResponse.builder()
+                    .ttdId(thingToDo.getTtdId())
+                    .title(thingToDo.getTitle())
+                    .description(thingToDo.getDescription())
+                    .image(thingToDo.getImage())
+                    .village(thingToDo.getVillage())
+                    .commune(thingToDo.getCommune())
+                    .district(thingToDo.getDistrict())
+                    .province(thingToDo.getProvince())
+                    .build();
+            thingToDoResponseList.add(thingToDoResponse);
+        }
+
+        BaseResponse<List<ThingToDoResponse>> baseResponse = new BaseResponse<>();
+        baseResponse.setCode(SUCCESS_CODE);
+        baseResponse.setStatus(SUCCESS);
+        baseResponse.setMsg("Get all thing to do successfully");
+        baseResponse.setData(thingToDoResponseList);
         return baseResponse;
     }
 }
