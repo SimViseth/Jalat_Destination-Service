@@ -98,5 +98,24 @@ public class ThingToDoServiceImpl implements ThingToDoService {
         updateData.setProvince(thingToDoRequest.getProvince());
 
         BaseEntityResponseDto<ThingToDo> saveUpdateData = thingToDoDao.saveEntity(updateData);
+        ThingToDo saveData = saveUpdateData.getEntity();
+
+        ThingToDoResponse thingToDoResponse = ThingToDoResponse.builder()
+                .ttdId(saveData.getTtdId())
+                .title(saveData.getTitle())
+                .image(saveData.getImage())
+                .description(saveData.getDescription())
+                .village(saveData.getVillage())
+                .commune(saveData.getCommune())
+                .district(saveData.getDistrict())
+                .province(saveData.getProvince())
+                .build();
+
+        BaseResponse<ThingToDoResponse> baseResponse = new BaseResponse<>();
+        baseResponse.setCode(SUCCESS_CODE);
+        baseResponse.setStatus(SUCCESS);
+        baseResponse.setMsg("Thing to do updated successfully");
+        baseResponse.setData(thingToDoResponse);
+        return baseResponse;
     }
 }
