@@ -20,4 +20,5 @@ public class PlaceToEatResponse {
     String commune;
     String district;
     String province;
+    Integer destination;
 }

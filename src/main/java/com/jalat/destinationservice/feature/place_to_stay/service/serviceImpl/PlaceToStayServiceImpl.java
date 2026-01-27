@@ -35,6 +35,7 @@ public class PlaceToStayServiceImpl implements PlaceToStayService {
         placeToStay.setCommune(placeToStayRequest.getCommune());
         placeToStay.setDistrict(placeToStayRequest.getDistrict());
         placeToStay.setProvince(placeToStayRequest.getProvince());
+        //placeToStay.setDestination(placeToStayRequest.getDestination());
 
         BaseEntityResponseDto<PlaceToStay> daoResponse = placeToStayDao.saveEntity(placeToStay);
 

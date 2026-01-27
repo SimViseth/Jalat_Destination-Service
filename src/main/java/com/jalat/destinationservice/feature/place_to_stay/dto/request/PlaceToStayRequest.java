@@ -17,4 +17,5 @@ public class PlaceToStayRequest {
     String commune;
     String district;
     String province;
+    Integer destination;
 }
