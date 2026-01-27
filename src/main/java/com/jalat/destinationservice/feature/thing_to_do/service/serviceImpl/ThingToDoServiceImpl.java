@@ -1,5 +1,6 @@
 package com.jalat.destinationservice.feature.thing_to_do.service.serviceImpl;
 
+import com.jalat.destinationservice.app.AppException;
 import com.jalat.destinationservice.app.BaseResponse;
 import com.jalat.destinationservice.core.BaseEntityResponseDto;
 import com.jalat.destinationservice.feature.thing_to_do.dao.ThingToDoDao;
@@ -140,6 +141,23 @@ public class ThingToDoServiceImpl implements ThingToDoService {
         baseResponse.setStatus(SUCCESS);
         baseResponse.setMsg("Get thing to do by id successfully");
         baseResponse.setData(thingToDoResponse);
+        return baseResponse;
+    }
+
+    @Override
+    public BaseResponse<Void> deleteThingToDo(Integer thingToDoId) {
+        BaseEntityResponseDto<ThingToDo> findThingToDo = thingToDoDao.findById(thingToDoId);
+
+        if (findThingToDo.getEntity() == null) {
+            throw new AppException("Thing to do not found");
+        }
+
+        thingToDoDao.deleteEntity(thingToDoId);
+
+        BaseResponse<Void> baseResponse = new BaseResponse<>();
+        baseResponse.setCode(SUCCESS_CODE);
+        baseResponse.setStatus(SUCCESS);
+        baseResponse.setMsg("Thing to do is deleted successfully");
         return baseResponse;
     }
 }

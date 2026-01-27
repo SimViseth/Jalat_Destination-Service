@@ -37,4 +37,9 @@ public class ThingToDoController {
     public BaseResponse<ThingToDoResponse> getThingToDoById(@PathVariable Integer thingToDoId) {
         return thingToDoService.getThingToDoById(thingToDoId);
     }
+
+    @DeleteMapping("/delete/{thingToDoId}")
+    public BaseResponse<Void> deleteThingToDo(@PathVariable Integer thingToDoId) {
+        return thingToDoService.deleteThingToDo(thingToDoId);
+    }
 }
