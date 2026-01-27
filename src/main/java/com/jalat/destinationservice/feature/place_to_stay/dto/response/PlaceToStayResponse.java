@@ -21,5 +21,5 @@ public class PlaceToStayResponse {
     String commune;
     String district;
     String province;
-    Integer destinationId;
+    Integer destination;
 }
